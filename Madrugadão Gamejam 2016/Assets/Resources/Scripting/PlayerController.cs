@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
             InteractType type = m_CurrInteractable.GetType();
             switch (type)
             {
-                case InteractType.FirePlace:
+                case InteractType.Bonfire:
                     if (m_BranchesCarrying > 0)
                     {
                         if (m_CurrInteractable.Interact())

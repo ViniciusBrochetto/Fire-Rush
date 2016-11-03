@@ -9,7 +9,7 @@ public interface IInteractable
 
 public enum InteractType
 {
-    FirePlace,
+    Bonfire,
     Tree,
     River,
     Invalid

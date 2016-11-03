@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public class Fireplace : MonoBehaviour
+public class TreeController : MonoBehaviour, IInteractable
 {
     [SerializeField]
-    private float m_MaxFuel;
+    private int m_MaxBranches;
     [SerializeField]
-    private float m_Fuel;
-    [SerializeField]
-    private float m_FuelConsumption;
+    private int m_Branches;
 
     private Renderer m_Renderer;
 
@@ -17,23 +16,17 @@ public class Fireplace : MonoBehaviour
         m_Renderer = GetComponent<Renderer>();
     }
 
-    void Update()
-    {
-        m_Fuel -= Time.deltaTime * m_FuelConsumption;
-        m_Renderer.material.color = Color.Lerp(Color.blue, Color.red, m_Fuel / m_MaxFuel);
-    }
-
     public bool Interact()
     {
         bool isValid = false;
 
-        if (m_Fuel > 0)
+        if (m_Branches > 0)
         {
-            m_Fuel--;
+            m_Branches--;
             isValid = true;
         }
 
-        if (m_Fuel == 0f)
+        if (m_Branches == 0f)
             m_Renderer.material.color = Color.red;
 
         Debug.Log("Interacted with: " + transform.name + (isValid ? ". And got a branch!" : ". But the Tree is empty!"));
